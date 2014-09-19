@@ -24,6 +24,7 @@ function sprite (options,xLoc,yLoc) {
 	that.sx = options.sx || 0;
 	that.sy = options.sy || 0;
 	that.loop = options.loop || false;
+	that.requiresUpdate = true;
 	that.frameIndex = options.frameStartIndex || 0;//Math.round(Math.random()*that.frameMax);
 	that.xOffset = options.xOffset || 0;
 	that.yOffset = options.yOffset || 0;
@@ -63,13 +64,13 @@ function sprite (options,xLoc,yLoc) {
 				if(that.frameIndex > that.frameMax) {
 					that.frameIndex = 0;
 				}			
-			}
-			
-			//var ctx = getCanvas(level) || getCanvas("object");
-			//ctx.clearRect(that.position.x, that.position.y, that.width, that.height);
-			clear(level,that.position.x, that.position.y, that.width, that.height);
-		}					
-		that.render(level);
+			}			
+			clear(level,that.position.x, that.position.y, that.width, that.height);	
+		}
+		if(that.loop || that.requiresUpdate) {
+			that.requiresUpdate = false;
+			that.render(level);		
+		}
 	}
 	
     return that;
