@@ -32,6 +32,7 @@ function imageLoaded() {
 	++imageLoadedCount
 	
 	if(totalImagesToLoad <= imageLoadedCount){
+		newScript("maps/level_01.js");
 		newScript("images/SpriteLocations.js");
 		newScript("scripts/initiate.js");
 	}
