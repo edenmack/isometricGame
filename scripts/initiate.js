@@ -21,7 +21,7 @@ function gameLoop () {
 
 	window.requestAnimationFrame(gameLoop);
   
-	//evaluateMap(map);
+	evaluateMap(map);
 	//sprite(SpriteLocations[map[0][0].floor]).update();
 
   
